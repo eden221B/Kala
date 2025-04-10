@@ -1,0 +1,92 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 20px; /* Added space from the top */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 10;
+    background: transparent; /* REMOVE the white background */
+    backdrop-filter: none; /* No additional blur here */
+    padding: 0; /* No extra padding */
+}
+
+.navbar-container {
+    background: whitesmoke; /* Keep the glassmorphism here */
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+}
+
+  .logo {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+    left:55px ;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    position: relative;
+    left: 450px;
+  }
+  
+  .nav-links li {
+    display: inline-block;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+    position: relative;
+    top: 18px;
+  }
+  .nav-links button {
+    position: relative;
+    left: 160px;
+    bottom:20px;
+    background-color: #a17620;
+    color: aliceblue;
+    border-radius: 30px;
+    width: 150px;  /* Adjust as needed */
+    height: 50px;  /* Adjust as needed */
+    font-size: 14px; /* Optional: Increases text size for better proportion */
+    padding: 5px 5px; /* Optional: Adds padding inside the button */
+}
+
+  
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Responsive */
+  @media (max-width: 900px) {
+    .navbar-container {
+      flex-direction: column;
+      padding: 10px 20px;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+  

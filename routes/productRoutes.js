@@ -2,16 +2,33 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product");
 const Category = require("../models/Category");
+const User = require("../models/Users");
 
-//add
+
 router.post("/add", async (req, res) => {
     try {
-        const newProduct = await Product.create(req.body);
+        const { user_id, category_id, name, description, price, stock, image } = req.body;
+
+        // Check if user exists
+        const userExists = await User.findByPk(user_id);
+        if (!userExists) {
+            return res.status(400).json({ error: "User not found. Cannot add product!" });
+        }
+
+        // Check if category exists
+        const categoryExists = await Category.findByPk(category_id);
+        if (!categoryExists) {
+            return res.status(400).json({ error: "Category not found. Cannot add product!" });
+        }
+
+        // Create product
+        const newProduct = await Product.create({ user_id, category_id, name, description, price, stock, image });
         res.status(201).json(newProduct);
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
 });
+
 
 //read
 router.get("/", async (req, res) => {
@@ -27,7 +44,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const product = await Product.findByPk(req.params.id, {
-            include: [{ model: Category, attributes: ["name"] }], // Include Category
+            include: [{ model: Category, attributes: ["name"] }], 
         });
 
         if (!product) {
@@ -71,6 +88,23 @@ router.delete("/:id", async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+//fetch
+// Fetch products by category (limit to 6)
+router.get("/category/:category_id", async (req, res) => {
+    try {
+        const { category_id } = req.params;
+        const products = await Product.findAll({
+            where: { category_id },
+            limit: 6, // Only fetch 6 products
+        });
+
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 
 
 module.exports = router;

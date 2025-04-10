@@ -1,0 +1,108 @@
+.footer {
+    background:  linear-gradient(135deg, #b39068, #dcc5a4);
+    color: #4d4030;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    top: 100px;
+    border-radius: 20px 20px 20px 20px;
+overflow: hidden;
+
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.footer-logo-section {
+    max-width: 350px;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.subscribe {
+    display: flex;
+    gap: 10px;
+}
+
+.subscribe input {
+    padding: 10px;
+    border: 1px solid #d3c5b5;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.subscribe button {
+    background: #a67c52;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.subscribe button:hover {
+    background: #8b5e3c;
+}
+
+.footer-links h3, .footer-contact h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: #4d4030;
+    transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #a67c52;
+}
+
+.footer-contact p {
+    margin: 5px 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #d3c5b5;
+    margin-top: 20px;
+}
+
+.footer-bottom a {
+    color: #a67c52;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+.product-page .footer {
+    top: 0px; /* No extra gap for Product.jsx */
+}

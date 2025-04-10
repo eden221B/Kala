@@ -1,11 +1,12 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
+const bcrypt = require("bcryptjs");
 
 const User = sequelize.define("User", {
     user_id: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
         autoIncrement: true,
+        primaryKey: true,
     },
     name: {
         type: DataTypes.STRING,
@@ -21,11 +22,14 @@ const User = sequelize.define("User", {
         allowNull: false,
     },
     role: {
-        type: DataTypes.ENUM("customer", "artisan"),
-        allowNull: false,
-    },
-}, {
-    timestamps: true,
+        type: DataTypes.STRING,
+        defaultValue: "user", // Default role
+    }
+});
+
+// Hash password before saving
+User.beforeCreate(async (user) => {
+    user.password = await bcrypt.hash(user.password, 10);
 });
 
 module.exports = User;
