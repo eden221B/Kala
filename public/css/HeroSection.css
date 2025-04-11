@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap');
+
+body
+{
+    color: #ede3c6;
+}
+.hero {
+    position: relative;
+    top: 70px;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 40px;
+    overflow: hidden;
+    z-index: 1;
+    margin: 0 20px; /* Adds space on left & right */
+    color: #ede3c6;
+}
+
+/* Background Image (Zoom Animation) */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("https://i.pinimg.com/736x/7d/b0/77/7db077d877b09caca12c0c2dfd2b8d28.jpg") center/cover no-repeat;
+    z-index: -1;
+    transform: scale(1);
+    animation: bg-zoom 4s infinite alternate ease-in-out;
+
+}
+
+/* Background Zoom Effect */
+@keyframes bg-zoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* Darkened Blur Effect */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    backdrop-filter: blur(4px) brightness(0.9);
+    opacity: 0.8;
+    z-index: 1;
+}
+
+/* Hero Content */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    color: white;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide-up Animation for Heading */
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 1.5s ease-in-out 0.5s forwards;
+    color: aliceblue;
+}
+
+/* Slide-up effect */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button */
+.hero-btn {
+    background: #b88e2f;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    transform: scale(1);
+    animation: fadeIn 1.5s ease-in-out 1s forwards;
+}
+
+.hero-btn:hover {
+    background: #a17620;
+    transform: scale(1.1);
+    animation: bounce 0.4s ease-in-out;
+}
+
+/* Button Bounce Animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 1.5s ease-in-out 0.5s forwards;
+    color: aliceblue !important;
+}

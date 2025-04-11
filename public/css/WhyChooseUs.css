@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.why-choose-us {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #f8f5f0;
+    position: relative;
+    top: 100px;
+    overflow: hidden;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3c2f2f;
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: slideIn 1.5s ease-in-out forwards;
+  }
+  
+  @keyframes slideIn {
+    0% { transform: translateY(-30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  .highlight {
+    color: #a88c5d;
+  }
+  
+  /* Grid Layout */
+  .why-choose-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+  }
+  
+  /* Card Base Style */
+  .why-card {
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(40px);
+    /* FIX HERE ↓ */
+    transition: opacity 1.2s ease-in-out, transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  }
+  
+  
+  /* Reveal Effect When in View */
+  .why-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Hover Animation - Slower Glow & Lift */
+  .why-card:hover {
+    transform: translateY(-5px) scale(1.015);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Light Cards */
+ /* Light Cards */
+/* Light Card */
+.light-card {
+    background: linear-gradient(135deg, #f4ede6, #b39068);
+    color: #5a3e2b;
+    background-size: 200% 200%;
+    animation: lightMotion 2s ease-in-out infinite alternate;
+  }
+  
+  .light-card:hover {
+    animation-play-state: paused;
+  }
+  
+  /* Dark Card */
+  .dark-card {
+    background: linear-gradient(135deg, #3c2f2f, #b39068);
+    color: #f5ebe0;
+    background-size: 200% 200%;
+    animation: darkMotion 2s ease-in-out infinite alternate;
+  }
+  
+  .dark-card:hover {
+    animation-play-state: paused;
+  }
+  
+  /* Light gradient movement */
+  @keyframes lightMotion {
+    0% {
+      background-position: 0% 50%;
+      background: linear-gradient(120deg, #f4ede6, #b39068);
+    }
+    50% {
+      background-position: 100% 50%;
+      background: linear-gradient(140deg, #f4ede6, #b39068);
+    }
+    100% {
+      background-position: 50% 0%;
+      background: linear-gradient(135deg, #f4ede6, #b39068);
+    }
+  }
+  
+  /* Dark gradient movement */
+  @keyframes darkMotion {
+    0% {
+      background-position: 0% 50%;
+      background: linear-gradient(120deg, #3c2f2f, #b39068);
+    }
+    50% {
+      background-position: 100% 50%;
+      background: linear-gradient(140deg, #3c2f2f, #b39068);
+    }
+    100% {
+      background-position: 50% 0%;
+      background: linear-gradient(135deg, #3c2f2f, #b39068);
+    }
+  }
+  
+  
+  
+  /* Image-Based Middle Section */
+  .image-card {
+    position: relative; /* REQUIRED for ::before to work properly */
+    grid-column: span 2;
+    background-image: url('https://i.pinimg.com/736x/d3/0e/b2/d30eb29cd458b3448eb775025eede27e.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    font-size: 25px;
+    font-family: 'Lobster', cursive;
+  }
+  
+  .image-card p ,.image-card h3
+  {
+    position: relative; /* Makes sure text is above overlay */
+  z-index: 10000;
+
+  }
+  
+  /* Background Zoom Effect - Slower */
+  .image-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    transition: transform 1s ease-in-out;
+  }
+  
+  .image-card:hover::before {
+    transform: scale(1.03);
+  }
+  
+  .image-card {
+    transition: transform 1s ease-in-out;
+  }
+  
+  .image-card:hover {
+    transform: scale(1.03);
+  }
+  .image-card::before {
+    pointer-events: none; /* So hover applies to the parent, not just the overlay */
+  }
+    
